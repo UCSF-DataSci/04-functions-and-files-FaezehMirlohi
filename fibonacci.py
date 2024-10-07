@@ -15,11 +15,6 @@ Task: Generate the Fibonacci numbers less than 100 and write them to `fibonacci_
 """
 import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument("limit", type=int, help="Limit for the Fibonacci sequence")
-parser.add_argument("file", help="file name to save the Fibonacci list in")
-args = parser.parse_args()
-
 def make_fibonacci(limit):
     fibonacci_list = []
     current_num = 0
@@ -31,6 +26,11 @@ def make_fibonacci(limit):
     return fibonacci_list
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("limit", type=int, help="Limit for the Fibonacci sequence")
+    parser.add_argument("file", help="file name to save the Fibonacci list in")
+    args = parser.parse_args()
+
     with open(args.file, 'w') as file:
         try:
             file.write(str(make_fibonacci(args.limit)))
